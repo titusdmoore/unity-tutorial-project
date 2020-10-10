@@ -8,10 +8,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float forwardForce = 2000f;
     public float horizontalForce = 0f;
+    public string userInput;
 
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    void Update() {
+
     }
 
     // Update is called once per frame
