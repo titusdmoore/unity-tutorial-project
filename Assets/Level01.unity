@@ -513,8 +513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1348514929}
-  forwardForce: 500
+  forwardForce: 0
   horizontalForce: 0
+  userInput: 
 --- !u!1 &1909514969
 GameObject:
   m_ObjectHideFlags: 0
