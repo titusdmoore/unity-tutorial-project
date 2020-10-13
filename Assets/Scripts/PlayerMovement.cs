@@ -16,28 +16,42 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
     }
 
-    void OnGUI() {
-
+/*    void OnGUI() {
         Event e = Event.current;
 
         //Check the type of the current event, making sure to take in only the KeyDown of the keystroke.
         //char.IsLetter to filter out all other KeyCodes besides alphabetical.
         if (e.type == EventType.KeyDown && e.keyCode.ToString().Length == 1 && char.IsLetter(e.keyCode.ToString()[0]) && (e.keyCode == KeyCode.A || e.keyCode == KeyCode.D)) {
             isMoving = true;
+            
 
             if (e.keyCode == KeyCode.D) {
                 isRight = true;
             } else {
                 isRight = false;
             }
+        } else if (e.type == EventType.KeyUp) {
+            isMoving = false;
         }
-
     }
-
+*/
 
     // Update is called once per frame
     // FixedUpdate is best practice for physics
     void FixedUpdate() {
+        if (Input.GetKey("a") || Input.GetKey("d")) {
+            isMoving = true;
+
+            if (Input.GetKey("d")) {
+                isRight = true;
+            } else {
+                isRight = false;
+            }
+        } else {
+            isMoving = false;
+        }
+
+
         rb.AddForce(isMoving 
             ? isRight 
                 ? horizontalForce * Time.deltaTime
