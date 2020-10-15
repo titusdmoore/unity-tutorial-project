@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
     public float forwardForce;
     public float horizontalForce;
 
-    private bool isMoving = false;
     private bool isRight;
 
     // Start is called before the first frame update
@@ -40,22 +39,19 @@ public class PlayerMovement : MonoBehaviour {
     // FixedUpdate is best practice for physics
     void FixedUpdate() {
         if (Input.GetKey("a") || Input.GetKey("d")) {
-            isMoving = true;
-
             if (Input.GetKey("d")) {
                 isRight = true;
             } else {
                 isRight = false;
             }
-        } else {
-            isMoving = false;
+
+
+            rb.AddForce(isRight
+                ? horizontalForce * Time.deltaTime
+                : -horizontalForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
 
-        rb.AddForce(isMoving 
-            ? isRight 
-                ? horizontalForce * Time.deltaTime
-                : -horizontalForce * Time.deltaTime
-            : 0, 0, forwardForce * Time.deltaTime);
+        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
     }
 }
