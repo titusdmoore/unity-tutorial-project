@@ -51,7 +51,10 @@ public class PlayerMovement : MonoBehaviour {
                 : -horizontalForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
-
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+
+        if (rb.position.y < -1.5) {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
